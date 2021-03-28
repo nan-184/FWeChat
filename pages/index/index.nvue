@@ -1,0 +1,39 @@
+<template>
+	<view class="">
+		<header-bar>
+			微信(88)
+		</header-bar>
+		<!-- <header-bar></header-bar> -->
+		
+
+	</view>
+</template>
+
+<script>
+	import headerBar from '@/components/header-bar/header-bar.vue'
+	export default {
+		components:{
+			headerBar
+		},
+		data() {
+			return {
+				statusBarHeight: 0
+			}
+		},
+		onLoad() {
+			// #ifdef APP-PLUS-NVUE
+			//加载时获得手机状态栏的高度
+			this.statusBarHeight = plus.navigator.getStatusbarHeight()
+			//#endif
+
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style>
+	
+	
+</style>
