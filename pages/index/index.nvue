@@ -1,23 +1,55 @@
 <template>
-	<view class="">
-		<header-bar>
-			微信(88)
+	<view class="index">
+		<!-- 头部导航区 -->
+		<header-bar>微信(88)
+			<!-- <header-bar></header-bar> -->
+			<view slot="glass">&#xe621;</view>
+			<view slot="add">&#xe65c;</view>
 		</header-bar>
-		<!-- <header-bar></header-bar> -->
-		
 
+		<!-- 列表区域 -->
+		<view class="main">
+			<view class="contain" v-for="(elem,index) in list" :key="index">
+				<media-list :elem="elem" :index="index"></media-list>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
+	// 头部导航组件
 	import headerBar from '@/components/header-bar/header-bar.vue'
+	import mediaList from '../../components/index-list/media-list.vue'
 	export default {
-		components:{
-			headerBar
+		components: {
+			headerBar,
+			mediaList
 		},
 		data() {
 			return {
-				statusBarHeight: 0
+				statusBarHeight: 0,
+				list: [{
+						num: 1,
+						img: "/static/header-img/timg.jpg",
+						username: "微信",
+						newinfo: "仿微信",
+						thetime: 1618421283200
+					},
+					{
+						num: 0,
+						img: "/static/header-img/timg.jpg",
+						username: "ww",
+						newinfo: "仿微信",
+						thetime: 1617421283200
+					},
+					{
+						num: 0,
+						img: "/static/header-img/timg.jpg",
+						username: "ww",
+						newinfo: "仿微信",
+						thetime: 1635623526
+					}
+				]
 			}
 		},
 		onLoad() {
@@ -33,7 +65,42 @@
 	}
 </script>
 
-<style>
-	
-	
+<style scoped>
+	.mymy{
+		background-color: #007AFF;
+	}
+	page {
+		width: 100%;
+		height: 100%;
+	}
+
+	.contain {
+		/* border: 1px solid #000; */
+		width: 750rpx;
+		height: 150rpx;
+		/* margin-left: 25rpx; */
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		/* justify-content: space-between; */
+		/* #ifdef APP-PLUS-NVUE */
+		/* margin: 0 13%; */
+		/* #endif */
+	}
+
+	.index {
+		width: 100%;
+		height: 100%;
+	}
+
+	.main {
+		/* #ifdef APP-PLUS-NVUE */
+		top: 160rpx;
+		/* #endif */
+		/* #ifndef APP-PLUS-NVUE */
+		top: 110rpx;
+		/* #endif */
+		position: fixed;
+		/* background-color: #007AFF; */
+	}
 </style>
